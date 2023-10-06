@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "user_can_init.h": "c",
+        "pid.h": "c",
+        "chassis.h": "c",
+        "motor.h": "c",
+        "config.h": "c"
+    }
+}
