@@ -458,7 +458,8 @@ void Velocity_Planning_setpos(MOTOR_REAL_INFO *M3508_MOTOR,float Pstart,float Pe
 
 void RM_MOTOR_Angle_Integral(MOTOR_REAL_INFO* RM_MOTOR)
 {
-	static float Delta_Pos = 0;
+	//static float Delta_Pos = 0;使用静态变量再次进入将无法清0
+	float Delta_Pos = 0;
 	float Deceleration_P = 0;
 
 	//记录第一次进入时的数据
@@ -484,7 +485,9 @@ void RM_MOTOR_Angle_Integral(MOTOR_REAL_INFO* RM_MOTOR)
 	}	
 	
 	//计算角度变化
-	if (RM_MOTOR->RPM >= 0)
+	if (RM_MOTOR->RPM == 0)
+		Delta_Pos = 0;
+	if (RM_MOTOR->RPM > 0)
 	{
 		/* code */
 		if(RM_MOTOR->ANGLE < RM_MOTOR->LAST_ANGLE)
